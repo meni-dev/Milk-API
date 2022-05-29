@@ -1,0 +1,63 @@
+﻿@model MilkProject.Web.Models.CustomerModel
+
+@{
+    ViewData["Title"] = "Manage Customer Information";
+}
+
+<h1>Create Customer</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ManageCustomer">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CustomerCode" class="control-label"></label>
+                <input asp-for="CustomerCode" class="form-control" disabled/>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" maxlength="10" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Village" class="control-label"></label>
+                <select data-val="true" data-val-required="The village field is required." asp-for="Village" class="form-control">
+                    <option value="">Pick one</option>
+                    
+                    <option value="Keelavarappan kuricy">Keelavarappan kurichi</option>
+                    <option value="Melavarappan kurichy">Melavarappan kurichi</option>
+                    <option value="Ayyampettai">Ayyampettai</option>
+                </select>
+                <span asp-validation-for="Village" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StreetName" class="control-label"></label>
+                <input asp-for="StreetName" class="form-control" />
+                <span asp-validation-for="StreetName" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> Active
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
